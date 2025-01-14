@@ -1,6 +1,6 @@
 import { useForm } from "@mantine/form";
 
-export const useValidateForm = () => {
+export const useValidateForm = (requiredFields = []) => {
   return useForm({
     mode: "controlled",
     initialValues: {
@@ -13,19 +13,34 @@ export const useValidateForm = () => {
     },
     validate: {
       "first-name": (value) => {
-        if (!value) return "First Name is required.";
+        if (requiredFields.includes("first-name") && !value) {
+          return "First Name is required.";
+        }
       },
       "last-name": (value) => {
-        if (!value) return "Last Name is required.";
+        if (requiredFields.includes("last-name") && !value) {
+          return "Last Name is required.";
+        }
       },
       department: (value) => {
-        if (!value) return "Department is required";
+        if (requiredFields.includes("department") && !value) {
+          return "Department is required";
+        }
       },
-      name: (value) =>
-        value && value.length < 2 ? "Name must have at least 2 letters" : null,
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
+      name: (value) => {
+        if (requiredFields.includes("name") && value && value.length < 2) {
+          return "Name must have at least 2 letters";
+        }
+      },
+      email: (value) => {
+        if (requiredFields.includes("email") && !/^\S+@\S+$/.test(value)) {
+          return "Invalid email";
+        }
+      },
       comments: (value) => {
-        if (!value) return "Enter message please.";
+        if (requiredFields.includes("comments") && !value) {
+          return "Enter message please.";
+        }
       },
     },
   });

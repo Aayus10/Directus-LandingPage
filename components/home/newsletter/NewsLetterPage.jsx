@@ -8,7 +8,7 @@ export function NewsLetterPage({ item }) {
     form: { success_message },
   } = item;
   const mutation = useSubscriptionMutation(success_message);
-  const form = useValidateForm();
+  const form = useValidateForm(["name", "email"]);
 
   const handleSubmit = (values) => {
     form.reset();
@@ -17,12 +17,13 @@ export function NewsLetterPage({ item }) {
 
   return (
     <Paper py={50} withBorder mx={"20%"}>
-      <Title mb={10} ta={"center"}>
+      <Title order={2} mb={10} ta={"center"}>
         {headline}
       </Title>
       <form onSubmit={form.onSubmit(handleSubmit)}>
         <TextInput
           required
+          mt={30}
           w={"50%"}
           mx={"25%"}
           label="Name"

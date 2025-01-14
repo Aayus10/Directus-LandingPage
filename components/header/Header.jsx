@@ -12,6 +12,7 @@ const links = [
   { link: "/contact", label: "Contact" },
   { link: "/about", label: "About Us" },
   { link: "/privacy", label: "Privacy Policy" },
+  { link: "/blogs", label: "Blogs" },
 ];
 
 export function Header() {
