@@ -1,0 +1,21 @@
+
+.aboutContent p{
+    margin-top: 50px;
+}
+
+.aboutContent ul {
+    text-align: left;
+    margin: 0 5%;
+    font-style: italic;
+  }
+  
+  @media (min-width: 640px) { /* Replace `--mantine-breakpoint-sm` with actual value */
+    .aboutContent ul {
+      margin: 0 15%;
+    }
+  }
+
+  @media (min-width: 1024px) { /* Replace `--mantine-breakpoint-sm` with actual value */
+    .aboutContent ul {
+      margin: 0 25%;
+    }}
